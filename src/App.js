@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import MusicPlayer from "./MusicPlayer";
+import SlideBar from "./SlideBar";
+
 
 function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex">
+      <div classname="flex-1">
+        <SlideBar isSidebarOpen={isSidebarOpen} />
+      </div>
+      <div className="flex-1">
+        <MusicPlayer  toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen}/>
+        
+      </div> 
     </div>
   );
 }
